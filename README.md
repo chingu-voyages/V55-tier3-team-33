@@ -37,5 +37,5 @@ coding!
 - Alex Deidda #1: [GitHub](https://github.com/aledesigncouk) / [LinkedIn](https://www.linkedin.com/in/alex-deidda/)
 - Teammate name #2: [GitHub](https://github.com/snowbytes) / [LinkedIn](https://linkedin.com/in/liaccountname)
 - Ikram Maizi #3: [GitHub](https://github.com/IkramMaizi) / [LinkedIn](https://www.linkedin.com/in/ikram-maizi-6142011bb/)
-- Yuri #4: [GitHub](https://github.com/LilyCalico) / [LinkedIn](https://linkedin.com/in/liaccountname)
-- Teammate name #5: [GitHub](https://github.com/etchepared) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Yuri #4: [GitHub](https://github.com/LilyCalico) / [LinkedIn](https://www.linkedin.com/in/yuri-oda/)
+- David #5: [GitHub](https://github.com/etchepared) / [LinkedIn](https://linkedin.com/in/liaccountname)
