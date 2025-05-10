@@ -35,7 +35,7 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Alex Deidda: [GitHub](https://github.com/aledesigncouk) / [LinkedIn](https://www.linkedin.com/in/alex-deidda/)
-- Teammate name: [GitHub](https://github.com/teammatename) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Anas Maddah: [GitHub](https://github.com/snowbytes) / [LinkedIn - TBD](https://linkedin.com/)
 - Teammate name: [GitHub](https://github.com/teammatename) / [LinkedIn](https://linkedin.com/in/liaccountname)
 - Teammate name: [GitHub](https://github.com/teammatename) / [LinkedIn](https://linkedin.com/in/liaccountname)
 - Teammate name: [GitHub](https://github.com/teammatename) / [LinkedIn](https://linkedin.com/in/liaccountname)
