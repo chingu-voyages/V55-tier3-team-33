@@ -39,14 +39,14 @@ const eslintConfig = [
       "react-hooks/exhaustive-deps": "warn",
     },
   },
-  {
-    plugins: {
-      tailwindcss: await import("eslint-plugin-tailwindcss"),
-    },
-    rules: {
-      "tailwindcss/classnames-order": "warn",
-    },
-  },
+  // {
+  //   plugins: {
+  //     tailwindcss: await import("eslint-plugin-tailwindcss"),
+  //   },
+  //   rules: {
+  //     "tailwindcss/classnames-order": "warn",
+  //   },
+  // },
   {
     plugins: {
       jsxA11y: await import("eslint-plugin-jsx-a11y"),
