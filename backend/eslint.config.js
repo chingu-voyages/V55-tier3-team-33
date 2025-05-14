@@ -1,5 +1,6 @@
 import eslintPluginTs from '@typescript-eslint/eslint-plugin';
 import parserTs from '@typescript-eslint/parser';
+import prettier from 'eslint-config-prettier';
 
 export default [
   {
@@ -21,5 +22,8 @@ export default [
       semi: ['warn', 'always'],
       quotes: ['warn', 'single'],
     },
+    extends: [
+      prettier
+    ],
   },
 ];
