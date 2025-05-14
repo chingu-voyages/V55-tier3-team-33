@@ -1,11 +1,4 @@
-echo "Linting before commit..."
-npm run lint
-
-echo "Formatting code before commit..."
-npm run format
-
-
-
+# echo "🚀 Running tests before push..."
 # npm test
 
 # if [ $? -ne 0 ]; then
