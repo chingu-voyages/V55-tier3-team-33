@@ -8,7 +8,14 @@
     "dev": "nodemon src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix"
+    "lint:fix": "eslint src --ext .ts --fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -27,6 +34,8 @@
     "eslint": "^9.26.0",
     "eslint-config-prettier": "^10.1.5",
     "globals": "^16.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^16.0.0",
     "nodemon": "^3.1.10",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
