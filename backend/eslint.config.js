@@ -19,8 +19,6 @@ export default [
     rules: {
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['warn'],
-      semi: ['warn', 'always'],
-      quotes: ['warn', 'single'],
     },
     extends: [
       prettier
