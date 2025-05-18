@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=22.9.0"
+  },
   "scripts": {
-    "start": "node src/server.ts",
-    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon --exec node --loader ts-node/esm --no-warnings=ExperimentalWarning src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
-    "prepare": "husky install"
+    "format": "prettier --write src/**/*.ts",
+    "prepare": "cd .. && husky install backend/.husky"
   },
   "lint-staged": {
     "src/**/*.ts": [
@@ -22,10 +28,10 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "dotenv": "^16.5.0",
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "@dotenvx/dotenvx": "^1.44.0",
     "@eslint/js": "^9.26.0",
     "@types/express": "^5.0.1",
     "@types/node": "^22.15.18",
