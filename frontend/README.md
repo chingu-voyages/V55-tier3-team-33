@@ -17,7 +17,7 @@ Requirements:
 Install:
 
 ```
-npm install
+npm ci
 ```
 Run local env:
 ```
