@@ -36,6 +36,6 @@ coding!
 
 - Alex Deidda: [GitHub](https://github.com/aledesigncouk) / [LinkedIn](https://www.linkedin.com/in/alex-deidda/)
 - Anas Maddah: [GitHub](https://github.com/snowbytes) / [LinkedIn - TBD](https://linkedin.com/)
-- Teammate name: [GitHub](https://github.com/teammatename) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Devim: [GitHub](https://github.com/devimalka) / [LinkedIn](https://linkedin.com/in/oshada-kularathne/)
 - Teammate name: [GitHub](https://github.com/teammatename) / [LinkedIn](https://linkedin.com/in/liaccountname)
 - Teammate name: [GitHub](https://github.com/teammatename) / [LinkedIn](https://linkedin.com/in/liaccountname)
