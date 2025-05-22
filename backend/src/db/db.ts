@@ -2,6 +2,7 @@ type User = {
   id: Number;
   email: string;
   password: string;
+  role: 'client' | 'trainer';
 };
 
 type Db = {
@@ -32,7 +33,7 @@ export async function findByEmail(
   email: string,
   collectionName: string
 ): Promise<User | undefined> {
-  console.log(db[collectionName]);
+  console.log('DB OUTPUT:', db[collectionName]);
   return Promise.resolve(
     db[collectionName].find((element) => element.email === email)
   );
