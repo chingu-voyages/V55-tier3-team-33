@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { createJWT } from '../utils/jwt.js';
-import { insert } from '../db/db.js';
+import { insert, findByEmail } from '../db/db.js';
 
 // @types/bcrypt @types/express -D
 type ValidationErrors = {
@@ -53,7 +53,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
   const accessToken = createJWT({ role });
 
   /// send it back
-  // res.json({ message: 'Hello from your Node.js backend!' });
   res.json({ accessToken });
 };
 
@@ -82,18 +81,27 @@ export async function login(req: Request, res: Response): Promise<void> {
 
   // verify the credentials
   // find the user using email
-  // then hash the password
-  const hashedPassword = await bcrypt.hash(password, 12);
-  // then compare them
-  // if (user.password != hashedPassword) {
-  //   res.status(401).json({ message: 'invalid email or password' })
-  //   return
-  // }
+  const user = await findByEmail(email, 'Users');
+
+  if (!user) {
+    res.status(401).json({ message: 'invalid email or password' });
+    return;
+  }
+
+  const storedPassword = user.password;
+
+  const isValid = await bcrypt.compare(password, storedPassword);
+  // compare
+  if (!isValid) {
+    res
+      .status(401)
+      .json({ message: 'INVALID COMPARISON - invalid email or password' });
+    return;
+  }
 
   // create and return the jwt
-  // const accessToken = createJWT({ user.role });
+  const accessToken = createJWT({ role: user.role });
 
   /// send it back
-  // res.json({ message: 'Hello from your Node.js backend!' });
-  // res.json({ accessToken });
+  res.json({ accessToken });
 }
