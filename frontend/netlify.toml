@@ -1,0 +1,4 @@
+# netlify.toml
+[build]
+base = /frontend
+command = "webpack"
