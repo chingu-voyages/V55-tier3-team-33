@@ -1,4 +1,8 @@
 # netlify.toml
 [build]
-base = /frontend
-command = "webpack"
+    base = "/frontend"
+    command = "npm run build"
+    publish = ".next"
+
+    [[plugins]]
+  package = "@netlify/plugin-nextjs"
