@@ -1,0 +1,16 @@
+echo "Linting before commit..."
+npm run lint
+
+echo "Formatting code before commit..."
+npm run format
+
+
+
+# npm test
+
+# if [ $? -ne 0 ]; then
+#   echo "❌ Tests failed! Push aborted."
+#   exit 1
+# else
+#   echo "✅ Tests passed! Push allowed."
+# fi
