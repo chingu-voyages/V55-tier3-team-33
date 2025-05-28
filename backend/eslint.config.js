@@ -1,25 +1,19 @@
-import eslintPluginTs from '@typescript-eslint/eslint-plugin';
-import parserTs from '@typescript-eslint/parser';
-import prettier from 'eslint-config-prettier';
+import js from "@eslint/js";
+import ts from 'typescript-eslint';
+import prettierConfig from "eslint-config-prettier";
 
+/**
+ * @type {Array<import("eslint").Linter.Config>}
+ */
 export default [
+  js.configs.recommended,
+  ...ts.configs.recommended,
+  prettierConfig,
   {
-    ignores: ['dist/**/*', 'node_modules/**/*'],
-  },
-  {
-    files: ['**/*.ts'],
-    languageOptions: {
-      parser: parserTs,
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-    },
-    plugins: {
-      '@typescript-eslint': eslintPluginTs,
-    },
+    name: "own/recommended",
+    files: ["**/*.ts"],
     rules: {
-      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['warn'],
     },
-    extends: [prettier],
   },
-];
+]
