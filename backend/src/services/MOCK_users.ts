@@ -1,14 +1,4 @@
-// needed common types?
-export interface User {
-  id: string;
-  fullname: string;
-  email: string;
-  phone: string | null;
-  role: 'trainer' | 'client';
-  created_at: string;
-  disciplines?: string[];
-  languages?: string[];
-}
+import { User } from '../models/userModel.js';
 
 // mocks
 export const users: User[] = [
