@@ -1,6 +1,4 @@
-export type Trainers = {
-  trainers: Trainer[];
-};
+export type Trainers = Trainer[];
 
 export interface Trainer {
   id: string;
