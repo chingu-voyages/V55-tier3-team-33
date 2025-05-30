@@ -1,10 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { argv } from 'node:process';
+import process from 'node:process';
 import { fileURLToPath, URL } from 'node:url';
 import { makeDb } from './db.js';
 
-const filename = argv[2];
+const filename = process.argv[2];
 const SQL_FILES_DIRNAME = fileURLToPath(
   new URL('./sql_scripts', import.meta.url)
 );
@@ -17,6 +17,10 @@ if (filename !== 'init.sql') {
 }
 
 await execSqlFile(filename);
+
+// command hangs, need to investigate if there's a different fix
+// eslint-disable-next-line n/no-process-exit
+process.exit(0);
 
 export async function execSqlFile(filename: string): Promise<void> {
   const pool = await makeDb();
@@ -35,4 +39,6 @@ export async function execSqlFile(filename: string): Promise<void> {
   for (const query of queries) {
     await pool.query(query);
   }
+
+  console.info('execution complete')
 }
