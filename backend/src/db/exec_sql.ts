@@ -9,7 +9,7 @@ const SQL_FILES_DIRNAME = fileURLToPath(
   new URL('./sql_scripts', import.meta.url)
 );
 
-if (filename !== 'init.sql') {
+if (!filename || !['init.sql', 'seed.sql'].includes(filename)) {
   // @ts-expect-error: ts error type needs to update to include error.cause
   throw new Error('no valid sql filename provided', {
     cause: { arg: { expected: 'existing sql_file_name', actual: filename } },
