@@ -4,6 +4,8 @@ import process from 'node:process';
 import { fileURLToPath, URL } from 'node:url';
 import { makeDb } from './db.js';
 
+import type { Pool } from 'mysql2/promise';
+
 const filename = process.argv[2];
 const SQL_FILES_DIRNAME = fileURLToPath(
   new URL('./sql_scripts', import.meta.url)
@@ -16,13 +18,15 @@ if (!filename || !['init.sql', 'seed.sql'].includes(filename)) {
   });
 }
 
-await execSqlFile(filename);
+console.info(`> executing ${filename}...`);
 
-// command hangs, need to investigate if there's a different fix
-// eslint-disable-next-line n/no-process-exit
-process.exit(0);
+const pool = await execSqlFile(filename);
+console.info(`> ${filename} executed`);
 
-export async function execSqlFile(filename: string): Promise<void> {
+await pool.end();
+console.info(`> all pool connections closed`);
+
+export async function execSqlFile(filename: string): Promise<Pool> {
   const pool = await makeDb();
 
   const contents = await fs.readFile(path.join(SQL_FILES_DIRNAME, filename), {
@@ -35,10 +39,9 @@ export async function execSqlFile(filename: string): Promise<void> {
     queries = queries.slice(0, -1);
   }
 
-  console.info(`executing ${filename}'s queries...`);
   for (const query of queries) {
     await pool.query(query);
   }
 
-  console.info('execution complete')
+  return pool;
 }
