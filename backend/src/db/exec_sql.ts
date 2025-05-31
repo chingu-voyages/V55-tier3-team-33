@@ -19,7 +19,6 @@ if (!filename || !['init.sql', 'seed.sql'].includes(filename)) {
 }
 
 console.info(`> executing ${filename}...`);
-
 const pool = await execSqlFile(filename);
 console.info(`> ${filename} executed`);
 
@@ -27,8 +26,6 @@ await pool.end();
 console.info(`> all pool connections closed`);
 
 export async function execSqlFile(filename: string): Promise<Pool> {
-  const pool = await makeDb();
-
   const contents = await fs.readFile(path.join(SQL_FILES_DIRNAME, filename), {
     encoding: 'utf8',
   });
@@ -39,9 +36,11 @@ export async function execSqlFile(filename: string): Promise<Pool> {
     queries = queries.slice(0, -1);
   }
 
-  for (const query of queries) {
-    await pool.query(query);
-  }
+  const pool = await makeDb();
+
+  const connection = await pool.getConnection();
+  await Promise.all(queries.map((query) => connection.query(query)));
+  connection.release();
 
   return pool;
 }
