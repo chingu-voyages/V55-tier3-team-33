@@ -12,6 +12,8 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "dotenvx run -- nodemon --exec node --loader ts-node/esm --no-warnings=ExperimentalWarning src/server.ts",
+    "db:init": "dotenvx run -- node --loader ts-node/esm --no-warnings=ExperimentalWarning src/db/exec_sql.ts init.sql",
+    "db:seed": "dotenvx run -- node --loader ts-node/esm --no-warnings=ExperimentalWarning src/db/exec_sql.ts seed.sql",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -32,7 +34,9 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "express": "^5.1.0"
+    "@paralleldrive/cuid2": "^2.2.2",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
   },
   "devDependencies": {
     "@dotenvx/dotenvx": "^1.44.0",
