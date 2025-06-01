@@ -4,6 +4,8 @@ import { trainers } from '../controllers/trainersController.js';
 
 const router = Router();
 
+// TODO: remove this after switching to codegen via swagger-jsdoc
+/* eslint-disable jsdoc/check-tag-names */
 /**
  * @swagger
  * /home:
