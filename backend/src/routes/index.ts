@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { home } from '../controllers/homeController.js';
+import { register } from '../controllers/authController.js';
 import { trainers } from '../controllers/trainersController.js';
 
 const router = Router();
@@ -52,5 +53,6 @@ router.get('/', home);
  *                     type: string
  */
 router.get('/trainers', trainers);
+router.post('/register', register);
 
 export default router;

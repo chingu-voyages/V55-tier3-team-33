@@ -35,13 +35,15 @@
   "type": "module",
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
+    "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "mysql2": "^3.14.1"
   },
   "devDependencies": {
     "@dotenvx/dotenvx": "^1.44.0",
     "@eslint/js": "^9.26.0",
-    "@types/express": "^5.0.1",
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.2",
     "@types/node": "^22.15.18",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
