@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import { makeId, isValidId } from '../db/db.js';
+import { saveClient, saveTrainer } from '../repositories/UserRepository.js';
 
 type ClientDetails = {
   id?: string;
@@ -9,11 +10,18 @@ type ClientDetails = {
   surname: string;
   phone?: string;
 };
+type Client = ClientDetails & {
+  id: string;
+  phone: string | undefined;
+  save: () => Promise<void>;
+};
 
 type TrainerDetails = ClientDetails & { city: string; disciplines: string[] };
-
-type Client = ClientDetails & { id: string };
-type Trainer = TrainerDetails & { id: string };
+type Trainer = TrainerDetails & {
+  id: string;
+  phone: string | undefined;
+  save: () => Promise<void>;
+};
 
 type ValidationErrors<T> = { [Property in keyof T]?: T[Property] };
 
@@ -69,8 +77,8 @@ export async function makeClient({
     );
   }
 
-  // expose business/domain related methods here
   // todo: sanitize and further normalize values
+  // expose business/domain related methods here
   return Object.freeze({
     id,
     email: email.toLowerCase(),
@@ -78,6 +86,9 @@ export async function makeClient({
     name: name.toLowerCase(),
     surname: surname.toLowerCase(),
     phone,
+    save() {
+      return saveClient(this);
+    },
   });
 }
 
@@ -109,17 +120,23 @@ export async function makeTrainer({
     // typescript being typescript...
     const { cause } = err as Error;
     Object.assign(erroneousFields, cause);
+  }
+
+  if (Object.keys(erroneousFields).length > 0) {
     throw new Error(
       `Validation failed for ${Object.keys(erroneousFields).join(', ')}`,
       { cause: erroneousFields }
     );
   }
 
-  // TODO: Sanitize and normalize if needed.
+  // TODO: Sanitize and further normalize values.
   // expose business/domain related methods here
   return Object.freeze({
     ...client,
     city: city.toLowerCase(),
     disciplines: disciplines.map((d) => d.toLowerCase()),
-  });
+    async save() {
+      return saveTrainer(this);
+    },
+  } as Trainer);
 }
