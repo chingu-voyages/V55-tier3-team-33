@@ -1,13 +1,11 @@
-// needed common types?
 export type Users = User[];
 
 export interface User {
   id: string;
-  fullname: string;
+  given_name: string;
+  surname: string;
   email: string;
-  phone: string | null;
-  role: 'trainer' | 'client'; // set an ENUM or too much?
+  phone: string;
+  role: boolean;
   created_at: string;
-  disciplines?: string[];
-  languages?: string[];
 }
