@@ -1,35 +1,10 @@
 import { Router } from 'express';
-import { home } from '../controllers/homeController.js';
-import { trainers } from '../controllers/trainersController.js';
+import { trainers, trainerById } from '../controllers/trainersController.js';
 
 const router = Router();
 
 // TODO: remove this after switching to codegen via swagger-jsdoc
 /* eslint-disable jsdoc/check-tag-names */
-/**
- * @swagger
- * /home:
- *   get:
- *     summary: Get a welcome message
- *     tags: [Home]
- *     responses:
- *       200:
- *         description: A simple message
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: string
- *                   name:
- *                     type: string
- */
-
-router.get('/', home);
-
 /**
  * @swagger
  * /trainers:
@@ -52,5 +27,36 @@ router.get('/', home);
  *                     type: string
  */
 router.get('/trainers', trainers);
+
+/* eslint-disable jsdoc/check-tag-names */
+/**
+ * @swagger
+ * /trainers/{id}:
+ *   get:
+ *     summary: Get a trainer by ID
+ *     tags: [Trainers]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: The trainer ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: A trainer object
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                 name:
+ *                   type: string
+ *       404:
+ *         description: Trainer not found
+ */
+router.get('/trainers/:id', trainerById);
 
 export default router;
