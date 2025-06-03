@@ -22,7 +22,7 @@ export function createJWT(userInfo: SafeUserInfo): string | Buffer {
   const issuedAt = Date.now();
   const jwtPayload = {
     iat: issuedAt,
-    exp: issuedAt + 15 * 60,
+    exp: issuedAt + 15 * 60 * 1000,
     ...userInfo,
   };
 
