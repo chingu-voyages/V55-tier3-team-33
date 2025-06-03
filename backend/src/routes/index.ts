@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { trainers, trainerById } from '../controllers/trainersController.js';
+import { register } from '../controllers/authController.js';
 
 const router = Router();
 
@@ -27,6 +28,7 @@ const router = Router();
  *                     type: string
  */
 router.get('/trainers', trainers);
+router.post('/register', register);
 
 /* eslint-disable jsdoc/check-tag-names */
 /**

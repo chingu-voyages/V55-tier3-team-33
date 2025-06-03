@@ -25,7 +25,7 @@ console.info(`> ${filename} executed`);
 await pool.end();
 console.info(`> all pool connections closed`);
 
-// eslint-disable-next-line
+// eslint-disable-next-line jsdoc/require-jsdoc
 export async function execSqlFile(filename: string): Promise<Pool> {
   const contents = await fs.readFile(path.join(SQL_FILES_DIRNAME, filename), {
     encoding: 'utf8',
@@ -40,7 +40,22 @@ export async function execSqlFile(filename: string): Promise<Pool> {
   const pool = await makeDb();
 
   const connection = await pool.getConnection();
-  await Promise.all(queries.map((query) => connection.query(query)));
+
+  await Promise.all(
+    queries.map((query) => {
+      query = query.trim();
+
+      if (query.toUpperCase() === 'START TRANSACTION') {
+        return connection.beginTransaction();
+      }
+      if (query.toUpperCase() === 'COMMIT') {
+        return connection.commit();
+      }
+
+      return connection.query(query);
+    })
+  );
+
   connection.release();
 
   return pool;
