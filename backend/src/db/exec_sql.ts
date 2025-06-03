@@ -25,6 +25,7 @@ console.info(`> ${filename} executed`);
 await pool.end();
 console.info(`> all pool connections closed`);
 
+// eslint-disable-next-line
 export async function execSqlFile(filename: string): Promise<Pool> {
   const contents = await fs.readFile(path.join(SQL_FILES_DIRNAME, filename), {
     encoding: 'utf8',
