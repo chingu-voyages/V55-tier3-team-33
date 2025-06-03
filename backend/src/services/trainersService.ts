@@ -1,28 +1,28 @@
 import { Trainers } from '../models/trainerModel.js';
-import { User } from '../models/userModel.js';
 import { makeDb } from '../db/db.js';
-
-const mapTrainers = (users: User[]): Trainers => {
-  return users
-    .filter(
-      (user): user is User & { disciplines: string[]; languages: string[] } =>
-        user.role === 'trainer'
-    )
-    .map((user) => ({
-      id: user.id,
-      fullname: user.fullname,
-      email: user.email,
-      phone: user.phone ?? null,
-      disciplines: user.disciplines ?? [],
-      languages: user.languages ?? [],
-    }));
-};
 
 export const getTrainers = async (): Promise<Trainers> => {
   const db = await makeDb();
-  const [rows] = await db.query('SELECT * FROM person WHERE trainer = 1');
-  const users = rows as User[];
+  const [rows] = await db.query(`
+    SELECT 
+      p.id AS trainer_id,
+      p.given_name,
+      p.surname,
+      p.email,
+      p.phone,
+      p.email_verified,
+      p.created_at,
+      t.city,
+      GROUP_CONCAT(DISTINCT d.name ORDER BY d.name SEPARATOR ', ') AS disciplines,
+      GROUP_CONCAT(DISTINCT l.name ORDER BY l.name SEPARATOR ', ') AS languages
+    FROM trainer t
+    JOIN person p ON t.person_id = p.id
+    LEFT JOIN trainer_discipline td ON t.person_id = td.trainer_id
+    LEFT JOIN discipline d ON td.discipline_id = d.id
+    LEFT JOIN trainer_lang tl ON t.person_id = tl.trainer_id
+    LEFT JOIN lang l ON tl.lang_id = l.id
+    GROUP BY p.id, p.given_name, p.surname, p.email, p.phone, p.email_verified, p.created_at, t.city
+  `);
 
-  const trainers: Trainers = mapTrainers(users);
-  return trainers;
+  return rows as Trainers;
 };
