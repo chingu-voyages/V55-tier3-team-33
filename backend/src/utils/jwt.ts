@@ -9,7 +9,7 @@ export type SafeUserInfo = {
 };
 
 // eslint-disable-next-line jsdoc/require-jsdoc
-export function createJWT(userInfo: SafeUserInfo): string | Buffer {
+export function createJWT({ id, ...userInfo }: SafeUserInfo): string | Buffer {
   const jwtHeader = {
     typ: 'JWT',
     alg: 'HS256',
@@ -21,6 +21,7 @@ export function createJWT(userInfo: SafeUserInfo): string | Buffer {
 
   const issuedAt = Date.now();
   const jwtPayload = {
+    sub: id,
     iat: issuedAt,
     exp: issuedAt + 15 * 60 * 1000,
     ...userInfo,
