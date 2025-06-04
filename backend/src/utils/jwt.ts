@@ -1,11 +1,15 @@
 import { Buffer } from 'node:buffer';
 import { createHmac } from 'node:crypto';
 
-export type UserInfo = {
+export type SafeUserInfo = {
+  id: string;
+  name: string;
+  surname: string;
   role: 'client' | 'trainer';
 };
 
-export function createJWT(userInfo: UserInfo): string | Buffer {
+// eslint-disable-next-line jsdoc/require-jsdoc
+export function createJWT(userInfo: SafeUserInfo): string | Buffer {
   const jwtHeader = {
     typ: 'JWT',
     alg: 'HS256',
@@ -17,13 +21,9 @@ export function createJWT(userInfo: UserInfo): string | Buffer {
 
   const issuedAt = Date.now();
   const jwtPayload = {
-    iss: 'stub-for-now-change-later-pls-be',
-    sub: 'stub-for-now-change-later-pls-fe',
-    aud: 'stub-for-now-change-later-pls-be',
     iat: issuedAt,
-    exp: issuedAt + 15 * 60,
-    name: 'test name',
-    role: userInfo.role,
+    exp: issuedAt + 15 * 60 * 1000,
+    ...userInfo,
   };
 
   const base64JwtPayload = Buffer.from(JSON.stringify(jwtPayload)).toString(

@@ -11,9 +11,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "dotenvx run -- nodemon --exec node --loader ts-node/esm --no-warnings=ExperimentalWarning src/server.ts",
-    "db:init": "dotenvx run -- node --loader ts-node/esm --no-warnings=ExperimentalWarning src/db/exec_sql.ts init.sql",
-    "db:seed": "dotenvx run -- node --loader ts-node/esm --no-warnings=ExperimentalWarning src/db/exec_sql.ts seed.sql",
+    "dev": "dotenvx run -- nodemon --exec tsx src/server.ts",
+    "db:init": "dotenvx run -- tsx src/db/exec_sql.ts init.sql",
+    "db:seed": "dotenvx run -- tsx src/db/exec_sql.ts seed.sql",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -58,7 +58,7 @@
     "prettier": "^3.5.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1"
   }
