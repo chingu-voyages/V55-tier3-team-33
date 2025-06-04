@@ -5,7 +5,7 @@ export type SafeUserInfo = {
   id: string;
   name: string;
   surname: string;
-  role: 'client' | 'trainer';
+  isTrainer: boolean;
 };
 
 // eslint-disable-next-line jsdoc/require-jsdoc
