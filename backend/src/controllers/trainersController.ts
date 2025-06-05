@@ -1,5 +1,8 @@
 import { type Request, type Response } from 'express';
-import { getTrainers, getTrainerById } from '../services/trainersService.js';
+import {
+  getTrainers,
+  getTrainerById,
+} from '../repositories/trainersService.js';
 
 export const trainers = async (req: Request, res: Response): Promise<void> => {
   try {
