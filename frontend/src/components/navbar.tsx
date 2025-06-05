@@ -3,7 +3,8 @@ import Link from "next/link"
 function NavBar() {
 
     return (
-        <nav className="bg-black w-full border-0 py-4 lg:px-24 px-10 flex justify-between items-center sticky top-0 z-10">
+        <nav className="w-full flex justify-between items-center px-6 py-4 bg-[var(--color-navbar)] border-b border-gray-300">
+
             <h1 className="text-3xl text-white flex items-center gap-2">
 
                 <Link href="/">App name</Link>
