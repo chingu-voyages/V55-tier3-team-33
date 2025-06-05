@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import "@styles/styles.scss";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+})
 export const metadata: Metadata = {
   title: "Loem Ipsum",
   description: "Lorem ipsum dolor est amet",
@@ -25,13 +19,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  // background image must go only on homepage
   return (
-    <html lang="en" className="bg-white text-black dark:bg-gray-900 dark:text-white">
+    <html lang="en" className="">
       <body
-        className="flex flex-col min-h-screen font-sans"
+        className="bg-homepage flex flex-col min-h-screen font-sans"
       >
         <NavBar />
-        <main className="flex-grow p-4 sm:p-8">{children}</main>
+        <main className="flex-grow flex flex-col">{children}</main>
         <Footer />
       </body>
     </html>
