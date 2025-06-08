@@ -1,5 +1,6 @@
 {
   "name": "backend",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,16 +11,21 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "dotenvx run -- nodemon --exec node --loader ts-node/esm --no-warnings=ExperimentalWarning src/server.ts",
+    "dev": "dotenvx run -- nodemon --exec tsx src/server.ts",
+    "db:init": "dotenvx run -- tsx src/db/exec_sql.ts init.sql",
+    "db:seed": "dotenvx run -- tsx src/db/exec_sql.ts seed.sql",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix",
-    "format": "prettier --write src/**/*.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write **/*.{js,ts,json}",
     "prepare": "cd .. && husky install backend/.husky"
   },
   "lint-staged": {
-    "src/**/*.ts": [
-      "eslint --fix",
+    "**/*.{js,ts}": [
+      "eslint",
+      "prettier --write"
+    ],
+    "**/*.json": [
       "prettier --write"
     ]
   },
@@ -28,23 +34,31 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "express": "^5.1.0"
+    "@paralleldrive/cuid2": "^2.2.2",
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
   },
   "devDependencies": {
     "@dotenvx/dotenvx": "^1.44.0",
     "@eslint/js": "^9.26.0",
-    "@types/express": "^5.0.1",
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.2",
     "@types/node": "^22.15.18",
-    "@typescript-eslint/eslint-plugin": "^8.32.1",
-    "@typescript-eslint/parser": "^8.32.1",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "eslint": "^9.26.0",
     "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-jsdoc": "^50.7.0",
+    "eslint-plugin-n": "^17.18.0",
     "globals": "^16.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^16.0.0",
     "nodemon": "^3.1.10",
     "prettier": "^3.5.3",
-    "ts-node": "^10.9.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1"
   }
