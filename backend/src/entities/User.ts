@@ -42,7 +42,8 @@ export async function makeClient({
     erroneousFields.id = id;
   }
 
-  const emailRegex = /^[A-Z0-9._-]{3,64}@[A-Z0-9-]{3,64}\.[A-Z]{2,32}$/gi;
+  const emailRegex =
+    /^[A-Z0-9._-]{3,64}@[A-Z0-9-]{3,64}(\.[A-Z]{2,32}){1,2}$/gi;
   if (!email || !emailRegex.test(email)) {
     erroneousFields.email = email;
   }

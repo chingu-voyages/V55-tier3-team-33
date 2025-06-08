@@ -4,14 +4,14 @@ import type { Request, Response } from 'express';
 
 // eslint-disable-next-line jsdoc/require-jsdoc
 export async function register(req: Request, res: Response) {
-  const { role, ...userDetails } = req.body;
+  const { isTrainer, ...userDetails } = req.body;
 
-  if (!['client', 'trainer'].includes(role)) {
+  if (typeof isTrainer != 'boolean') {
     res.status(400).json({ message: 'invalid role specified!' });
     return;
   }
 
-  const makeUser = role == 'client' ? makeClient : makeTrainer;
+  const makeUser = isTrainer ? makeTrainer : makeClient;
 
   let user;
   try {
@@ -32,7 +32,7 @@ export async function register(req: Request, res: Response) {
   }
 
   const { id, name, surname } = user;
-  const accessToken = createJWT({ id, name, surname, role });
+  const accessToken = createJWT({ id, name, surname, isTrainer });
 
   res.status(201).json({ accessToken });
 }
