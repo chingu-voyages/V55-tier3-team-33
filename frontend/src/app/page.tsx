@@ -1,4 +1,5 @@
 // homepage
+import Link from "next/link";
 import { Button } from "@components/ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonRunning } from "@fortawesome/free-solid-svg-icons/faPersonRunning";
@@ -35,7 +36,7 @@ export default function Home() {
               {/* make it scroll , bring to features, infos etc*/}
             </div>
             <div className="flex justify-center gap-4 text-sm text-gray-600">
-              Already have one account?
+             <Link href="/login"> Already have one account? Login</Link>
             </div>
           </div>
         </main>
