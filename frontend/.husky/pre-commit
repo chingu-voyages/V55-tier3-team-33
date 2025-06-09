@@ -1,16 +1,8 @@
-echo "Linting before commit..."
-npm run lint
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-echo "Formatting code before commit..."
+# format
 npm run format
 
-
-
-# npm test
-
-# if [ $? -ne 0 ]; then
-#   echo "❌ Tests failed! Push aborted."
-#   exit 1
-# else
-#   echo "✅ Tests passed! Push allowed."
-# fi
+# Run lint and block commit if errors
+npm run lint || (echo "❌ Lint errors found. Commit blocked."; exit 1)

@@ -4,7 +4,6 @@
 
 Lorem Ipsum dolor est...
 
-
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [shadcn/ui](https://ui.shadcn.com/) (Radix + Tailwind-based UI components)
@@ -12,6 +11,7 @@ Lorem Ipsum dolor est...
 ### Getting Started
 
 Requirements:
+
 - Nodejs 22.9.0
 
 Install:
@@ -19,7 +19,9 @@ Install:
 ```
 npm ci
 ```
+
 Run local env:
+
 ```
 npm run dev
 ```
@@ -29,7 +31,6 @@ npm run dev
 ```
 npx shadcn-ui add input
 ```
-
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -45,9 +46,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ├── lib/utils.tsx     # Common utilities/functions
 ```
 
-
-
 #### Deploy
 
 Work in progress
-
