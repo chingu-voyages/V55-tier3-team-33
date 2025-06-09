@@ -36,7 +36,7 @@ export default function Home() {
               {/* make it scroll , bring to features, infos etc*/}
             </div>
             <div className="flex justify-center gap-4 text-sm text-gray-600">
-             <Link href="/login"> Already have one account? Login</Link>
+              <Link href="/login"> Already have one account? Login</Link>
             </div>
           </div>
         </main>
