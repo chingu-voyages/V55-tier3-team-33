@@ -1,5 +1,8 @@
-echo "Linting before commit..."
-npm run lint
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-echo "Formatting code before commit..."
+# format
 npm run format
+
+# Run lint and block commit if errors
+npm run lint || (echo "❌ Lint errors found. Commit blocked."; exit 1)
