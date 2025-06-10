@@ -5,7 +5,7 @@ import { makeDb } from '../db/db.js';
 // TODO : add pagination, handle errors
 export const getTrainers = async (): Promise<Trainers> => {
   const db = await makeDb();
-  const [rows] = await db.query(`
+  const [rows] = await db.query<RowDataPacket[]>(`
     SELECT 
       p.id AS id,
       p.given_name,
@@ -23,7 +23,20 @@ export const getTrainers = async (): Promise<Trainers> => {
     GROUP BY p.id, p.given_name, p.surname, p.phone, t.city
   `);
 
-  return rows as Trainers;
+  return rows.map(
+    (row: RowDataPacket): Trainer => ({
+      id: row.id,
+      given_name: row.given_name,
+      surname: row.surname,
+      email: row.email,
+      phone: row.phone ?? null,
+      city: row.city,
+      disciplines: row.disciplines
+        ? row.disciplines.split(', ').filter(Boolean)
+        : [],
+      languages: row.languages ? row.languages.split(', ').filter(Boolean) : [],
+    })
+  ) as Trainers;
 };
 
 export const getTrainerById = async (id: string): Promise<Trainer> => {
@@ -53,5 +66,18 @@ export const getTrainerById = async (id: string): Promise<Trainer> => {
     [id]
   );
 
-  return rows[0] as Trainer;
+  return rows[0].map(
+    (row: RowDataPacket): Trainer => ({
+      id: row.id,
+      given_name: row.given_name,
+      surname: row.surname,
+      email: row.email,
+      phone: row.phone ?? null,
+      city: row.city,
+      disciplines: row.disciplines
+        ? row.disciplines.split(', ').filter(Boolean)
+        : [],
+      languages: row.languages ? row.languages.split(', ').filter(Boolean) : [],
+    })
+  ) as Trainer;
 };
