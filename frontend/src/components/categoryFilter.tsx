@@ -20,16 +20,22 @@ function CategoryFilter(CategoryFilterProps: CategoryFilterProps) {
 
     return (
         <div className="my-12">
-            Categories: {CategoryFilterProps.categories.map((type: string, id) => (
+            Categories: 
+            <Badge className="bg-[var(--color-accent)] m-2 p-1.5 text-xs">All</Badge>
+            {CategoryFilterProps.categories.map((type: string, id) => (
                 <Badge
-                    variant={"outline"}
+                    variant="outline"
                     key={`${type}-${id}`}
-                    className={`
-                        bg-${id}
-                        text-${id}
-                        
+                    className="
+                    text-xs
+                        bg-white cursor-pointer
+                        text-black
+                        mr-2
+                        p-1.5
+                        hover:bg-[var(--color-dark)]
+                        hover:text-white
                          cursor-pointer
-                        `}
+                        "
                     onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleOnClick(e, type)}
                 >
                     {type}
