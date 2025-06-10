@@ -1,11 +1,16 @@
 import { getTrainers } from "@lib/api";
+import CategoryFilter from "@/components/categoryFilter";
+
+const categories = ['yoga', 'fitness', 'pilates', 'hiit', 'bodybuilding', 'zumba', 'martial arts', 'strength training', 'cardio kickboxing', 'spinning'];
 
 export default async function UsersPage() {
   const trainers = await getTrainers();
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">User List</h1>
+      <h1 className="text-3xl font-bold mb-6">Find Your Fitness Coach</h1>
+      <div>Browse and book top trainers for Yoge, fitness, Pilates, and more.</div>
+      <CategoryFilter categories={categories} selectedCategory={''} />
       {trainers.map((trainer) => (
         <div key={trainer.id} className="mb-4">
           <h2 className="text-xl font-semibold">
