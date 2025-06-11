@@ -36,10 +36,11 @@ export default function CategoryFilter(
         <Badge
           variant="outline"
           key={`${type}-${id}`}
-          className={`text-xs mr-2 p-1.5 cursor-pointer ${state.selectedCategory === type
-            ? "bg-[var(--color-accent)] text-white"
-            : "bg-white text-black hover:bg-[var(--color-dark)] hover:text-white"
-            }`}
+          className={`text-xs mr-2 p-1.5 cursor-pointer ${
+            state.selectedCategory === type
+              ? "bg-[var(--color-accent)] text-white"
+              : "bg-white text-black hover:bg-[var(--color-dark)] hover:text-white"
+          }`}
           onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
             handleOnClick(e, type)
           }
