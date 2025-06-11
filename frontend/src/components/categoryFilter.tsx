@@ -12,7 +12,7 @@ interface CategoryFilterProps {
 export default function CategoryFilter(
   CategoryFilterProps: CategoryFilterProps
 ) {
-  const { dispatch } = React.useContext(CategoryContext);
+  const { state, dispatch } = React.useContext(CategoryContext);
 
   const handleOnClick = (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -25,21 +25,21 @@ export default function CategoryFilter(
   return (
     <div className="my-12">
       Categories:
-      <Badge className="bg-[var(--color-accent)] m-2 p-1.5 text-xs">All</Badge>
+      <Badge
+        variant="outline"
+        className={`m-2 p-1.5 text-xs cursor-pointer ${state.selectedCategory === "" ? "bg-[var(--color-accent)] text-white" : "bg-white text-dark"}`}
+        onClick={() => dispatch({ type: "SELECTED_CATEGORY", payload: "" })}
+      >
+        All
+      </Badge>
       {CategoryFilterProps.categories.map((type: string, id) => (
         <Badge
           variant="outline"
           key={`${type}-${id}`}
-          className="
-                    text-xs
-                        bg-white cursor-pointer
-                        text-black
-                        mr-2
-                        p-1.5
-                        hover:bg-[var(--color-dark)]
-                        hover:text-white
-                         cursor-pointer
-                        "
+          className={`text-xs mr-2 p-1.5 cursor-pointer ${state.selectedCategory === type
+            ? "bg-[var(--color-accent)] text-white"
+            : "bg-white text-black hover:bg-[var(--color-dark)] hover:text-white"
+            }`}
           onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
             handleOnClick(e, type)
           }
