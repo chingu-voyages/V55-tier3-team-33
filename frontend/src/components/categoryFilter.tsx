@@ -9,8 +9,10 @@ interface CategoryFilterProps {
   selectedCategory: string;
 }
 
-function CategoryFilter(CategoryFilterProps: CategoryFilterProps) {
-  const { state, dispatch } = React.useContext(CategoryContext);
+export default function CategoryFilter(
+  CategoryFilterProps: CategoryFilterProps
+) {
+  const { dispatch } = React.useContext(CategoryContext);
 
   const handleOnClick = (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -18,7 +20,6 @@ function CategoryFilter(CategoryFilterProps: CategoryFilterProps) {
   ) => {
     e.preventDefault();
     dispatch({ type: "SELECTED_CATEGORY", payload: type });
-    console.log("cat", state.selectedCategory);
   };
 
   return (
@@ -49,5 +50,3 @@ function CategoryFilter(CategoryFilterProps: CategoryFilterProps) {
     </div>
   );
 }
-
-export default CategoryFilter;

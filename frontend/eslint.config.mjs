@@ -27,7 +27,7 @@ export default [
       import: importPlugin.default,
       react: reactPlugin.default,
       "react-hooks": reactHooksPlugin.default,
-      "jsx-a11y": jsxA11yPlugin.default
+      "jsx-a11y": jsxA11yPlugin.default,
     },
     rules: {
       "prettier/prettier": "warn",

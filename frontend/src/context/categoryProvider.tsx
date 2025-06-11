@@ -7,11 +7,7 @@ import {
   initialState,
 } from "./categoryContext";
 
-export default function RecipeProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function CategoryProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(categoryReducer, initialState);
   return (
     <CategoryContext.Provider value={{ state, dispatch }}>
@@ -19,3 +15,5 @@ export default function RecipeProvider({
     </CategoryContext.Provider>
   );
 }
+
+export default CategoryProvider;
