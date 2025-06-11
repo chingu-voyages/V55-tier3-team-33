@@ -22,30 +22,14 @@ export default [
     "next/typescript",
     "plugin:prettier/recommended"
   ),
-
   {
     plugins: {
       import: importPlugin.default,
       react: reactPlugin.default,
       "react-hooks": reactHooksPlugin.default,
-      "jsx-a11y": jsxA11yPlugin.default,
-      // "tailwindcss": tailwindcssPlugin.default
+      "jsx-a11y": jsxA11yPlugin.default
     },
     rules: {
-      "import/order": [
-        "warn",
-        {
-          groups: [
-            ["builtin", "external"],
-            "internal",
-            "parent",
-            "sibling",
-            "index",
-          ],
-          "newlines-between": "always",
-          alphabetize: { order: "asc", caseInsensitive: true },
-        },
-      ],
       "prettier/prettier": "warn",
       "react/self-closing-comp": "warn",
       "react-hooks/rules-of-hooks": "error",
@@ -53,12 +37,8 @@ export default [
       "jsx-a11y/alt-text": "warn",
       "jsx-a11y/anchor-is-valid": "warn",
       "jsx-a11y/no-autofocus": "warn",
-      // optional tailwind rules (disabled for now)
-      // "tailwindcss/classnames-order": "warn",
-
       quotes: ["warn", "double", { avoidEscape: true }],
       semi: ["warn", "always"],
-      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       "no-console": ["warn", { allow: ["warn", "error"] }],
     },
   },
