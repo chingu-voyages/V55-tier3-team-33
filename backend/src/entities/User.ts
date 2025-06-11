@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { makeId, isValidId } from '../db/db.js';
-import { saveClient, saveTrainer } from '../repositories/UserRepository.js';
+import { saveClient, saveTrainer } from '../repositories/userRepository.js';
 
 type ClientDetails = {
   id?: string;
