@@ -18,12 +18,15 @@ interface TrainersListerProps {
 export default function TrainersLister({ trainers }: TrainersListerProps) {
   const { state } = React.useContext(CategoryContext);
 
+  const filteredTrainers = state.selectedCategory
+    ? trainers.filter((trainer: Trainer) =>
+      trainer.disciplines.includes(state.selectedCategory)
+    )
+    : trainers;
+
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {trainers
-        .filter((trainer: Trainer) =>
-          trainer.disciplines.includes(state.selectedCategory)
-        )
+      {filteredTrainers
         .map((trainer: Trainer) => (
           <Card
             key={trainer.id}
