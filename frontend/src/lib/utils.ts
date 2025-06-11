@@ -8,5 +8,5 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getDisciplines(data: Trainer[]): string[] {
   const disciplines = data.map((trainer) => trainer.disciplines);
-  return disciplines.flat();
+  return [...new Set(disciplines.flat())];
 }
