@@ -6,7 +6,7 @@ import { faPersonRunning } from "@fortawesome/free-solid-svg-icons/faPersonRunni
 
 export default function Home() {
   return (
-    <div className="flex flex-1 items-center justify-center min-h-full px-4 sm:px-12">
+    <div className="bg-homepage flex flex-1 items-center justify-center min-h-full px-4 sm:px-12">
       <div className="max-w-[1240px] w-full flex justify-end">
         <main className="max-w-xl w-full">
           <div className="bg-white flex flex-col justify-center p-12 gap-8 shadow-xl rounded-lg">
