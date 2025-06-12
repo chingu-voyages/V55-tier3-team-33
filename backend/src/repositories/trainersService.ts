@@ -2,7 +2,7 @@ import { RowDataPacket } from 'mysql2';
 import { Trainers, Trainer } from '../types/trainer.js';
 import { makeDb } from '../db/db.js';
 
-// TODO : add pagination, handle errors
+// TODO : add pagination, handle errors !! refactor to get all data formatted in teh right way from the query
 export const getTrainers = async (): Promise<Trainers> => {
   const db = await makeDb();
   const [rows] = await db.query<RowDataPacket[]>(`
@@ -66,18 +66,20 @@ export const getTrainerById = async (id: string): Promise<Trainer> => {
     [id]
   );
 
-  return rows[0].map(
-    (row: RowDataPacket): Trainer => ({
-      id: row.id,
-      given_name: row.given_name,
-      surname: row.surname,
-      email: row.email,
-      phone: row.phone ?? null,
-      city: row.city,
-      disciplines: row.disciplines
-        ? row.disciplines.split(', ').filter(Boolean)
-        : [],
-      languages: row.languages ? row.languages.split(', ').filter(Boolean) : [],
-    })
-  ) as Trainer;
+  const row = rows[0];
+  if (!row) {
+    throw new Error('Trainer not found');
+  }
+
+  return {
+    id: row.id,
+    given_name: row.given_name,
+    surname: row.surname,
+    email: row.email,
+    phone: row.phone ?? null,
+    city: row.city,
+    disciplines: row.disciplines ? (row.disciplines as unknown as string).split(', ').filter(Boolean)
+      : [],
+    languages: row.languages ? (row.languages as unknown as string).split(', ').filter(Boolean) : [],
+  } as Trainer;
 };
