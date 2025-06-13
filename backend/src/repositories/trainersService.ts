@@ -13,7 +13,7 @@ export const getTrainers = async (): Promise<Trainers> => {
       p.phone,
       t.city,
       GROUP_CONCAT(DISTINCT d.name ORDER BY d.name SEPARATOR ', ') AS disciplines,
-      GROUP_CONCAT(DISTINCTl.name ORDER BY l.name SEPARATOR ', ') AS languages
+      GROUP_CONCAT(DISTINCT l.name ORDER BY l.name SEPARATOR ', ') AS languages
     FROM trainer t
     JOIN person p ON t.person_id = p.id
     LEFT JOIN trainer_discipline td ON t.person_id = td.trainer_id
