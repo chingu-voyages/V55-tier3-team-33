@@ -66,7 +66,7 @@ export const getTrainerById = async (id: string): Promise<Trainer> => {
     [id]
   );
 
-  return rows[0].map(
+  return rows.map(
     (row: RowDataPacket): Trainer => ({
       id: row.id,
       given_name: row.given_name,
@@ -79,5 +79,5 @@ export const getTrainerById = async (id: string): Promise<Trainer> => {
         : [],
       languages: row.languages ? row.languages.split(', ').filter(Boolean) : [],
     })
-  ) as Trainer;
+  )[0];
 };
