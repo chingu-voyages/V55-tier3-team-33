@@ -1,8 +1,9 @@
 // homepage
-import Link from "next/link";
-import { Button } from "@components/ui/button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonRunning } from "@fortawesome/free-solid-svg-icons/faPersonRunning";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+
+import { Button } from "@components/ui/button";
 
 export default function Home() {
   return (
