@@ -15,10 +15,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // background image must go only on homepage
   return (
     <html lang="en" className="">
-      <body className="bg-homepage flex flex-col min-h-screen font-sans">
+      <body className="flex flex-col min-h-screen font-sans">
         <NavBar />
         <main className="flex-grow flex flex-col">{children}</main>
         <Footer />
