@@ -25,12 +25,6 @@ export default function Home() {
             </p>
 
             <div className="flex justify-center gap-4">
-              {/* <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
-              Get Started
-            </button>
-            <button className="border border-gray-300 text-gray-700 px-6 py-2 rounded hover:bg-gray-100 transition">
-              Learn More
-            </button> */}
               <Link href="/trainers">
                 <Button>Find a trainer</Button>
               </Link>
