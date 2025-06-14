@@ -17,7 +17,7 @@ export async function getTrainers(): Promise<Trainer[]> {
   }
 }
 
-export async function getTrainer(id: string): Promise<Trainer | {}> {
+export async function getTrainer(id: string): Promise<Trainer | null> {
   try {
     const url = process.env.NEXT_PUBLIC_API_URL + "trainers/" + id;
     const res = await fetch(url, { cache: "no-cache" });
@@ -30,6 +30,6 @@ export async function getTrainer(id: string): Promise<Trainer | {}> {
     return data ?? {};
   } catch (error) {
     console.error("Error fetching data: ", error);
-    return {};
+    return null;
   }
 }
