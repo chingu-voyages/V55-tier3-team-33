@@ -31,8 +31,10 @@ export default function Home() {
             <button className="border border-gray-300 text-gray-700 px-6 py-2 rounded hover:bg-gray-100 transition">
               Learn More
             </button> */}
-              <Button>Sign Up</Button>
-              <Button variant="outline">Learn More</Button>{" "}
+              <Link href="/trainers">
+                <Button>Find a trainer</Button>
+              </Link>
+              {/* <Button variant="outline">Learn More</Button> */}
               {/* make it scroll , bring to features, infos etc*/}
             </div>
             <div className="flex justify-center gap-4 text-sm text-gray-600">
