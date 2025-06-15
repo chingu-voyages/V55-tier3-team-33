@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonRunning } from "@fortawesome/free-solid-svg-icons/faPersonRunning";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 function NavBar() {
   return (
