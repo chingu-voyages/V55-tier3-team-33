@@ -26,10 +26,11 @@ export default function Home() {
 
             <div className="flex justify-center gap-4">
               <Link href="/trainers">
-                <Button>Find a trainer</Button>
+                <Button className="cursor-pointer">Find a trainer</Button>
               </Link>
-              {/* <Button variant="outline">Learn More</Button> */}
-              {/* make it scroll , bring to features, infos etc*/}
+              <Link href="/register">
+                <Button variant="outline" className="cursor-pointer">Register as Trainer</Button>
+              </Link>
             </div>
             <div className="flex justify-center gap-4 text-sm text-gray-600">
               <Link href="/login"> Already have one account? Login</Link>
