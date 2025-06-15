@@ -29,7 +29,7 @@ npm run dev
 ### Add components from shadcn
 
 ```
-npx shadcn-ui add input
+npx shadcn add input
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
