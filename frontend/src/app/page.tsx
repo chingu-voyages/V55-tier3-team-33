@@ -30,7 +30,9 @@ export default function Home() {
                 <Button className="cursor-pointer">Find a trainer</Button>
               </Link>
               <Link href="/register">
-                <Button variant="outline" className="cursor-pointer">Register as Trainer</Button>
+                <Button variant="outline" className="cursor-pointer">
+                  Register as Trainer
+                </Button>
               </Link>
             </div>
             <div className="flex justify-center gap-4 text-sm text-gray-600">
