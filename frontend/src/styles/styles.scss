@@ -1,0 +1,19 @@
+:root {
+  /* colors */
+  --color-navbar: #d9d9d9;
+  --color-dark: #1c1f2b;
+  --color-primary: #00bfa5;
+  --color-accent: #d46919;
+}
+
+/* homepage background */
+.bg-homepage {
+  background-image: url("../../public/images/bg_home.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
