@@ -33,3 +33,34 @@ export async function getTrainer(id: string): Promise<Trainer | null> {
     return null;
   }
 }
+
+export async function register(trainerData: {
+  email: string;
+  password: string;
+  name: string;
+  surname: string;
+  city: string;
+  disciplines: string[];
+  languages: string[];
+}): Promise<string | void> {
+  const url = process.env.NEXT_PUBLIC_API_URL + "register";
+  let res;
+
+  try {
+    res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...trainerData, isTrainer: true }),
+      cache: "no-cache",
+    });
+  } catch (error) {
+    console.error("Error posting data: ", error);
+    throw error;
+  }
+
+  if (!res.ok) {
+    throw new Error("Failed to post data", { cause: await res.json() });
+  }
+
+  return res.json();
+}
