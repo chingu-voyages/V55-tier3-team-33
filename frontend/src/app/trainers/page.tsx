@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import CategoryFilter from "@/components/categoryFilter";
 import TrainersLister from "@/components/trainersLister";
 import CategoryProvider from "@context/categoryProvider";
