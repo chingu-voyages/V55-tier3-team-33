@@ -9,7 +9,7 @@ import Link from "next/link";
 export default async function TrainersPage({
   params,
 }: {
-  params: { trainerId: string };
+  params: Promise<{ trainerId: string }>;
 }) {
   const { trainerId } = await params;
   const trainer = await getTrainer(trainerId);
